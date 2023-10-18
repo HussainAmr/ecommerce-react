@@ -18,9 +18,9 @@ const navigation = [
 	{ name: "Team", href: "#", current: false },
 ];
 const userNavigation = [
-	{ name: "Your Profile", href: "#" },
-	{ name: "Settings", href: "#" },
-	{ name: "Sign out", href: "#" },
+	{ name: "Your Profile", link: "/" },
+	{ name: "Settings", link: "/" },
+	{ name: "Sign out", link: "/login" },
 ];
 
 function classNames(...classes) {
@@ -56,7 +56,7 @@ export default function Navbar({ children }) {
 															item.current
 																? "bg-gray-900 text-white"
 																: "text-gray-300 hover:bg-gray-700 hover:text-white",
-															"rounded-md px-3 py-2 text-sm font-medium"
+															"rounded-md cursor-pointer px-3 py-2 text-sm font-medium"
 														)}
 														aria-current={
 															item.current
@@ -116,7 +116,7 @@ export default function Navbar({ children }) {
 													leaveFrom="transform opacity-100 scale-100"
 													leaveTo="transform opacity-0 scale-95"
 												>
-													<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+													<Menu.Items className="absolute  right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 														{userNavigation.map(
 															(item) => (
 																<Menu.Item
@@ -127,21 +127,21 @@ export default function Navbar({ children }) {
 																	{({
 																		active,
 																	}) => (
-																		<a
-																			href={
-																				item.href
+																		<Link
+																			to={
+																				item.link
 																			}
 																			className={classNames(
 																				active
-																					? "bg-gray-100"
+																					? "bg-gray-100 "
 																					: "",
-																				"block px-4 py-2 text-sm text-gray-700"
+																				"block  px-4 py-2 text-sm text-gray-700"
 																			)}
 																		>
 																			{
 																				item.name
 																			}
-																		</a>
+																		</Link>
 																	)}
 																</Menu.Item>
 															)

@@ -14,10 +14,15 @@ import {
 import CheckoutPage from "./pages/CheckoutPage";
 
 import ProductDetailPage from "./pages/ProductDetailPage";
+import Protected from "./features/auth/components/Protected";
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Home></Home>,
+		element: (
+			<Protected>
+				<Home></Home>,
+			</Protected>
+		),
 	},
 	{
 		path: "/login",
@@ -29,15 +34,27 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/cart",
-		element: <CartPage></CartPage>,
+		element: (
+			<Protected>
+				<CartPage></CartPage>,
+			</Protected>
+		),
 	},
 	{
 		path: "/checkout",
-		element: <CheckoutPage></CheckoutPage>,
+		element: (
+			<Protected>
+				<CheckoutPage></CheckoutPage>,
+			</Protected>
+		),
 	},
 	{
-		path: "/productdetail",
-		element: <ProductDetailPage></ProductDetailPage>,
+		path: "/productdetail/:id",
+		element: (
+			<Protected>
+				<ProductDetailPage></ProductDetailPage>,
+			</Protected>
+		),
 	},
 ]);
 
